@@ -22,6 +22,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
+import { MatRadioModule } from '@angular/material/radio'
+import { MatSliderModule } from '@angular/material/slider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card'
+
 
 @NgModule({
   declarations: [
@@ -41,6 +46,10 @@ import { MatListModule } from '@angular/material/list';
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatListModule,
+    MatRadioModule,
+    MatSliderModule,
+    MatSnackBarModule,
+    MatCardModule,
 
     BrowserAnimationsModule,
     ReactiveFormsModule,

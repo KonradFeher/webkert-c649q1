@@ -8,7 +8,6 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// Palette using #44c0c5 as primary color
 $primary: (
   50: #e0f6f7,
   100: #b3e9ea,
@@ -34,29 +33,28 @@ $primary: (
   ),
 );
 
-// Palette using #168489 as accent color
 $accent: (
-  50: #e1f1f3,
-  100: #b6dfe6,
-  200: #85c9d7,
-  300: #54b2c8,
-  400: #33a2bd,
-  500: #1282aa,
-  600: #11789d,
-  700: #0f6a8b,
-  800: #0d5b78,
-  900: #0a3d52,
+  50: #fdeee9,
+  100: #fccccc,
+  200: #faad99,
+  300: #f88e66,
+  400: #f77033,
+  500: #f65100,
+  600: #e64a00,
+  700: #cc3e00,
+  800: #b33300,
+  900: #992700,
   contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #ffffff,
-    400: #ffffff,
-    500: #ffffff,
-    600: #ffffff,
-    700: #ffffff,
-    800: #ffffff,
-    900: #ffffff,
+  50: #000000,
+  100: #000000,
+  200: #000000,
+  300: #000000,
+  400: #ffffff,
+  500: #ffffff,
+  600: #ffffff,
+  700: #ffffff,
+  800: #ffffff,
+  900: #ffffff,
   ),
 );
 $bananalyzer-primary: mat.define-palette($primary, 500, 100, 700);

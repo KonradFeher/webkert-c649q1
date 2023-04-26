@@ -1,1 +1,22 @@
-<p>main works!</p>
+<div class="container">
+  <mat-card class="main-card">
+    <mat-card-title><h2>Let's get bananalytical!</h2></mat-card-title>
+    <mat-card *ngIf="loggedInUser">
+      <mat-card-title>Hello, {{ loggedInUser?.username }}!</mat-card-title>
+      <mat-card-content>
+        <p>Work in progress, the code monkeys are operating at full speed...</p>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary" (click)="logOut()">Log out</button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card class="login-card" *ngIf="!loggedInUser">
+      <mat-card-header>You're not logged in yet, so let's get to it.</mat-card-header>
+      <mat-card-subtitle>No account? Set one up real quick!</mat-card-subtitle>
+      <mat-card-actions align="end">
+        <button mat-button [routerLink]="'/login'">LOG IN</button>
+        <button mat-button [routerLink]="'/register'">REGISTER</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-card>
+</div>

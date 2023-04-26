@@ -1,1 +1,49 @@
-<p>register works!</p>
+<div class="container">
+  <div class="title">Register</div>
+  <div class="div-flex">
+    <form [formGroup]="form">
+      <mat-form-field>
+        <mat-label for="username">Username</mat-label>
+        <input matInput formControlName="username" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label for="email">Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label for="password">Password</mat-label>
+        <input matInput type="password" formControlName="password" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label for="passwordAgain">Password again</mat-label>
+        <input matInput type="password" formControlName="passwordAgain" />
+      </mat-form-field>
+
+      <mat-radio-group
+        formControlName="gender"
+        style="display: flex; flex-direction: row; margin-bottom: 20px"
+      >
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field>
+        <mat-label for="age">Age</mat-label>
+        <input matInput type="number" min="12" max="120" formControlName="age" />
+      </mat-form-field>
+
+      <div id="weight-field">
+        <mat-label id="weight-label" for="weight">Weight (kg)</mat-label>
+        <mat-slider discrete tickInterval=".5" min="30" max="200">
+          <input matSliderThumb formControlName="weight"/>
+        </mat-slider>
+      </div>
+
+      <button mat-raised-button color="primary" (click)="submitForm()">Register</button>
+      <button mat-raised-button color="secondary" (click)="goBack()" tabindex="999">Back</button>
+    </form>
+  </div>
+</div>
