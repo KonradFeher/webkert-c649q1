@@ -25,10 +25,12 @@ import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio'
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { NewDayComponent } from './pages/new-day/new-day.component';
 import { FruitPipe } from './shared/pipes/fruit.pipe';
+import { VitaminPipe } from './shared/pipes/vitamin.pipe';
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { FruitPipe } from './shared/pipes/fruit.pipe';
     RegisterComponent,
     NotFoundComponent,
     NewDayComponent,
-    FruitPipe
+    FruitPipe,
+    VitaminPipe
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ import { FruitPipe } from './shared/pipes/fruit.pipe';
     MatSnackBarModule,
     MatCardModule,
     MatTableModule,
+    MatIconModule,
 
     BrowserAnimationsModule,
     ReactiveFormsModule,

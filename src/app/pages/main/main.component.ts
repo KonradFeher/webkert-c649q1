@@ -5,7 +5,10 @@ import { UserDay } from 'src/app/shared/models/UserDay';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { FruitPipe } from 'src/app/shared/pipes/fruit.pipe';
+import { VitaminPipe } from 'src/app/shared/pipes/vitamin.pipe';
 
 
 const MOCK_DATA: UserDay[] = [
