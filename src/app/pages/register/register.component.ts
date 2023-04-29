@@ -4,7 +4,7 @@ import { AuthService } from '../../shared/services/auth.service';
 import { User } from 'src/app/shared/models/User';
 import { UserService } from '../../shared/services/user.service';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

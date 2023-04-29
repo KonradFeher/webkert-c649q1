@@ -24,8 +24,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio'
 import { MatSliderModule } from '@angular/material/slider';
+import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatCardModule } from '@angular/material/card'
+import { MatCardModule } from '@angular/material/card';
+import { NewDayComponent } from './pages/new-day/new-day.component';
+import { FruitPipe } from './shared/pipes/fruit.pipe';
 
 
 @NgModule({
@@ -36,6 +39,8 @@ import { MatCardModule } from '@angular/material/card'
     MainComponent,
     RegisterComponent,
     NotFoundComponent,
+    NewDayComponent,
+    FruitPipe
   ],
   imports: [
     BrowserModule,
@@ -50,6 +55,7 @@ import { MatCardModule } from '@angular/material/card'
     MatSliderModule,
     MatSnackBarModule,
     MatCardModule,
+    MatTableModule,
 
     BrowserAnimationsModule,
     ReactiveFormsModule,
