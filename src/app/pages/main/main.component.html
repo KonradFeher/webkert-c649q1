@@ -2,7 +2,7 @@
   <mat-card class="main-card">
     <mat-card-title *ngIf="loggedInUser"><h2>Your Vitamin Days</h2></mat-card-title>
     <mat-card *ngIf="loggedInUser">
-      <mat-card-title> Let's get bananalytical...</mat-card-title>
+      <mat-card-title> Let's get bananalytical, {{currentUser}}...</mat-card-title>
       <mat-card-content>
         <table mat-table [dataSource]="userDays">
           <ng-container matColumnDef="position">

@@ -25,6 +25,7 @@ const MOCK_DATA: UserDay[] = [
 })
 export class MainComponent implements OnInit {
   loggedInUser: any;
+  currentUser: string = sessionStorage.getItem('currentUser') ?? "Unknown user...";
   displayedColumns: string[] = ['position', 'date', 'fruits', 'vitaminC'];
   userDays = MOCK_DATA;
 
@@ -45,6 +46,7 @@ export class MainComponent implements OnInit {
 
   logOut(): void {
     this.authService.logout();
+    sessionStorage.removeItem('currentUser')
     this.loggedInUser = undefined;
     this.router.navigateByUrl('/login')
   }

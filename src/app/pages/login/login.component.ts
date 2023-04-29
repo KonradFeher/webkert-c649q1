@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router'
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { UserService } from 'src/app/shared/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private userService: UserService,
     private router: Router,
     private snackBar: MatSnackBar,
   ) { }
@@ -33,7 +35,13 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(this.email.value??'', this.password.value??'').then(cred => {
       console.log(cred);
-      this.router.navigateByUrl('/main');
+      if (cred?.user?.uid){
+        this.userService.getById(cred.user.uid).subscribe(user => {
+          if (user?.email)
+            sessionStorage.setItem('currentUser', user.email) // TODO save the entire user
+          this.router.navigateByUrl('/main');  
+        });
+      }
       this.loading = false;
     }).catch(error => {
       console.error(error);
