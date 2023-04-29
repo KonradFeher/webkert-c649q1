@@ -37,8 +37,11 @@ export class LoginComponent implements OnInit {
       console.log(cred);
       if (cred?.user?.uid){
         this.userService.getById(cred.user.uid).subscribe(user => {
-          if (user?.email)
-            sessionStorage.setItem('currentUser', user.email) // TODO save the entire user
+          sessionStorage.setItem('session_email', user?.email || "unknown") 
+          sessionStorage.setItem('session_age', user?.age.toString() || "unknown") 
+          sessionStorage.setItem('session_gender', user?.gender || "unknown") 
+          sessionStorage.setItem('session_weight', user?.weight.toString() || "unknown") 
+          sessionStorage.setItem('session_username', user?.username || "unknown") 
           this.router.navigateByUrl('/main');  
         });
       }

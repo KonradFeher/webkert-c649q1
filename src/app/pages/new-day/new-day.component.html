@@ -1,6 +1,7 @@
 
 <form [formGroup]="fruitForm">
   <h2> Add a New Vitamin Day! </h2>
+  <h3> How much fruit did you eat? (grams) </h3>
   <mat-form-field>
     <input required id="datePicker" matInput [matDatepicker]="picker" placeholder="Enter date" formControlName="date">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -10,8 +11,9 @@
   <div layout>
   <mat-form-field *ngFor="let fruit of fruits; let i = index">
     <mat-label>{{ fruit }}</mat-label>
-    <input matInput type="number" placeholder="Enter quantity" formControlName="{{ 'fruit-' + i }}" min="0">
+    <input matInput type="number" placeholder="Enter quantity" formControlName="{{ 'fruit-' + i }}" min="0" step="50">
   </mat-form-field>
   </div>
-  <button type="submit" mat-raised-button color="primary" (click)="onSubmit()">ADD</button>
+  <button type="submit" mat-raised-button color="primary" (click)="onSubmit()" [disabled]="submitting">ADD</button>
+  <mat-spinner *ngIf="submitting"></mat-spinner>
 </form>
