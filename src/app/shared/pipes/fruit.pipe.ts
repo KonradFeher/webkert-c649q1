@@ -10,11 +10,9 @@ export class FruitPipe implements PipeTransform {
 
     let result = "";
     for (let i = 0; i < value.length; i++) {
-      if (i > 0 && i % 5 === 0) {
-        result += "\n";
-      }
       const fruitIndex = i % fruits.length;
-      result += `${value[i]}${fruits[fruitIndex]} `;
+      if (value[i])
+      result += `${value[i]}g${fruits[fruitIndex]} `;
     }
 
     return result.trim();
