@@ -4,6 +4,7 @@ import { MainComponent } from './pages/main/main.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { NewDayComponent } from './pages/new-day/new-day.component';
 
 const routes: Routes = [
   {
@@ -16,11 +17,14 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent
   },
   {
+    path: 'new-day', component: NewDayComponent
+  },
+  {
     path: 'not-found', component: NotFoundComponent
   },
   {
     path: '',
-    redirectTo: '/main',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {

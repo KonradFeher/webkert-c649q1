@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router'
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-login',
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
   async onSubmit() {
     console.log("login attempt:");
     console.log(this.email.value??'' + "\n" + this.password.value??'');
+    this.loading = true;
 
     this.authService.login(this.email.value??'', this.password.value??'').then(cred => {
       console.log(cred);
