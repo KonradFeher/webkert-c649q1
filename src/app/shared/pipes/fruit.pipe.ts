@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FruitPipe implements PipeTransform {
 
   transform(value: Array<number>, ...args: unknown[]): unknown {
-    const fruits = ["🍊", "🍎", "🍌", "🍇", "🍉", "🍓", "🍑", "🍍"];
+    let fruits = ['🍊', '🍐', '🍌', '🍇', '🍉', '🍓', '🍑', '🍍', '🍒', '🍎'];
 
     let result = "";
     for (let i = 0; i < value.length; i++) {

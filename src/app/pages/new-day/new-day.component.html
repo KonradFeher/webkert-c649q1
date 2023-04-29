@@ -1,1 +1,17 @@
-<p>new-day works!</p>
+
+<form [formGroup]="fruitForm">
+  <h2> Add a New Vitamin Day! </h2>
+  <mat-form-field>
+    <input required id="datePicker" matInput [matDatepicker]="picker" placeholder="Enter date" formControlName="date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <div layout>
+  <mat-form-field *ngFor="let fruit of fruits; let i = index">
+    <mat-label>{{ fruit }}</mat-label>
+    <input matInput type="number" placeholder="Enter quantity" formControlName="{{ 'fruit-' + i }}" min="0">
+  </mat-form-field>
+  </div>
+  <button type="submit" mat-raised-button color="primary" (click)="onSubmit()">ADD</button>
+</form>

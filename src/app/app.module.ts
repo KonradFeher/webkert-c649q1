@@ -20,6 +20,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio'
@@ -31,6 +32,7 @@ import { MatCardModule } from '@angular/material/card';
 import { NewDayComponent } from './pages/new-day/new-day.component';
 import { FruitPipe } from './shared/pipes/fruit.pipe';
 import { VitaminPipe } from './shared/pipes/vitamin.pipe';
+import { MatNativeDateModule } from '@angular/material/core'
 
 
 @NgModule({
@@ -49,6 +51,8 @@ import { VitaminPipe } from './shared/pipes/vitamin.pipe';
     BrowserModule,
     AppRoutingModule,
 
+    MatNativeDateModule,
+    MatDatepickerModule,
     MatInputModule,
     MatButtonModule,
     MatProgressSpinnerModule,
