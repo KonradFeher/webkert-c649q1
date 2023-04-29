@@ -23,5 +23,4 @@ export class AuthService {
   logout() {
     return this.auth.signOut();
   }
-
 }

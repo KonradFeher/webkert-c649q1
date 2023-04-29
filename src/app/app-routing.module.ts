@@ -5,10 +5,12 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NewDayComponent } from './pages/new-day/new-day.component';
+import { AuthGuard } from './shared/services/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'main', component: MainComponent
+    path: 'main', component: MainComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login', component: LoginComponent
@@ -17,7 +19,8 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent
   },
   {
-    path: 'new-day', component: NewDayComponent
+    path: 'new-day', component: NewDayComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'not-found', component: NotFoundComponent

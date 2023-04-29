@@ -101,9 +101,15 @@ export class NewDayComponent implements OnInit{
     // 90 mg + 0.65 mg/kg of body weight + (−0.51 × age) + (gender factor)
 
     let vitC = this.calculateVitaminCConsumption(this.age, this.gender, this.weight, quantities)
+    let d = new Date(this.fruitForm.value.date)
+    d.setHours(0);
+    d.setMinutes(0);
+    d.setSeconds(0);
+    d.setMilliseconds(0);
+    
 
     let userDay: UserDay = {
-      date: new Date(this.fruitForm.value.date).getTime() - (new Date(this.fruitForm.value.date).getTime() % 86400000),
+      date: d.getTime(),
       email: this.email,
       fruits: quantities,
       vitaminC: vitC[2]

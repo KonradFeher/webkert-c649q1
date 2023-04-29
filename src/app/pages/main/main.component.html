@@ -2,7 +2,7 @@
   <mat-card class="main-card">
     <mat-card-title *ngIf="loggedInUser"><h2>Your Vitamin Days</h2></mat-card-title>
     <mat-card *ngIf="loggedInUser">
-      <mat-card-title> Let's get bananalytical, {{session_email}}...</mat-card-title>
+      <mat-card-title> Let's get bananalytical...</mat-card-title>
       <mat-card-content>
         <table mat-table [dataSource]="userDays">
 
@@ -39,7 +39,7 @@
 
       </mat-card-content>
       <mat-card-actions align="end">
-        <button mat-raised-button color="primary" (click)="logOut()">Log out</button>
+        <button mat-raised-button color="primary" (click)="logMeOut()">Log out</button>
       </mat-card-actions>
     </mat-card>
     <mat-card class="login-card" *ngIf="!loggedInUser">

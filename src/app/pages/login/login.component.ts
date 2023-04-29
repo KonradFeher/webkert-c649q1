@@ -29,12 +29,16 @@ export class LoginComponent implements OnInit {
   }
 
   async onSubmit() {
+    if (sessionStorage.getItem('session_email')) {
+      this.router.navigateByUrl('/main');
+      return;
+    }
     console.log("login attempt:");
     console.log(this.email.value??'' + "\n" + this.password.value??'');
     this.loading = true;
 
     this.authService.login(this.email.value??'', this.password.value??'').then(cred => {
-      console.log(cred);
+      // console.log(cred);
       if (cred?.user?.uid){
         this.userService.getById(cred.user.uid).subscribe(user => {
           sessionStorage.setItem('session_email', user?.email || "unknown") 

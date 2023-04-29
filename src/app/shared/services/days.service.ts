@@ -77,7 +77,7 @@ export class DaysService {
           console.log("no user found");
           resolve(false);
         } else {
-          const filteredDays = Object.values(days).filter((day: UserDay) => day.date !== date);
+          const filteredDays = Object.assign({}, Object.values(days).filter((day: UserDay) => day.date !== date));
           this.update(email, filteredDays).then(() => {
             console.log("day deleted");
             resolve(true);

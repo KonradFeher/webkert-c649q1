@@ -17,40 +17,30 @@ import { DaysService } from 'src/app/shared/services/days.service';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  loggedInUser: any;
-  session_email: string = sessionStorage.getItem('session_email') ?? "Unknown user...";
   displayedColumns: string[] = ['date', 'fruits', 'vitaminC', 'delete'];
   userDays: UserDay[] = [];
+  loggedInUser: string = "";
 
   constructor(private router: Router, private userService: UserService, private authService: AuthService, private daysService: DaysService) {
   }
 
   ngOnInit(): void {
-    this.authService.isUserLoggedIn().subscribe(cred => {
-      console.log(cred)
-      if (cred) {
-        this.userService.getById(cred.uid).subscribe(user => {
-          console.log(user);
-          this.loggedInUser = user;
-
-          // Fetch user's days from the DaysService
-          this.daysService.getByEmail(this.loggedInUser.email).subscribe((days: any) => {
-            if (days) {
-              // Convert object of days to array
-              this.userDays = Object.values(days);
-              this.userDays.sort((a, b) => a.date - b.date);
-            }
-          });
-        })
+    this.loggedInUser = sessionStorage.getItem('session_email')??"";
+    this.daysService.getByEmail(this.loggedInUser).subscribe((days: any) => {
+      if (days) {
+        // Convert object of days to array
+        this.userDays = Object.values(days);
+        this.userDays.sort((a, b) => a.date - b.date);
       }
-    })
+    });
   }
 
-  logOut(): void {
+  async logMeOut(){
+    // bugos az SDK
     this.authService.logout();
-    sessionStorage.removeItem('session_email')
-    this.loggedInUser = undefined;
-    this.router.navigateByUrl('/login')
+    await new Promise(f => setTimeout(f, 1000));
+    sessionStorage.clear();
+    this.router.navigateByUrl('/login');
   }
 
   onDelete(userDay: UserDay) {
