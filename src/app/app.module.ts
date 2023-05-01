@@ -32,7 +32,8 @@ import { MatCardModule } from '@angular/material/card';
 import { NewDayComponent } from './pages/new-day/new-day.component';
 import { FruitPipe } from './shared/pipes/fruit.pipe';
 import { VitaminPipe } from './shared/pipes/vitamin.pipe';
-import { MatNativeDateModule } from '@angular/material/core'
+import { MatNativeDateModule } from '@angular/material/core';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app'
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { MatNativeDateModule } from '@angular/material/core'
     AngularFireModule.initializeApp(environment.firebase),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    provideFirebaseApp(() => initializeApp(environment.firebase))
   ],
   providers: [],
   bootstrap: [AppComponent]

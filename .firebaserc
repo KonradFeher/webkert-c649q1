@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "webkert-c649q1": {
+      "hosting": {
+        "bananalyzer": [
+          "webkert-c649q1"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "webkert-c649q1"
+  }
+}
