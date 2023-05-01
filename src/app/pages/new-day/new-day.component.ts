@@ -6,6 +6,8 @@ import { DaysService } from '../../shared/services/days.service';
 import { UserDay } from '../../shared/models/UserDay';
 import { Router } from '@angular/router';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { FruitService } from 'src/app/shared/services/fruit.service';
+import { Fruit } from 'src/app/shared/models/Fruit';
 
 @Component({
   selector: 'app-new-day',
@@ -15,15 +17,17 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
 export class NewDayComponent implements OnInit{
   fruitForm: FormGroup;
   submitting: boolean = false;
-  fruits = ['🍊 Oranges', '🍐 Pears', '🍌 Bananas', '🍇 Grapes', '🍉 Watermelons', '🍓 Strawberries', '🍑 Peaches', '🍍 Pineapples', '🍒 Cherries', '🍎 Apples'];
+  fruits: Fruit[] = []; 
   email: string;
   gender: string;
   age: number;
   weight: number;
+  vitaminC: number[] = [];
 
-  constructor(private formBuilder: FormBuilder, private router:Router, private snackBar: MatSnackBar, private daysService: DaysService) {
+  constructor(private formBuilder: FormBuilder, private router:Router, private snackBar: MatSnackBar, private daysService: DaysService, private fruitService: FruitService) {
     this.email = this.gender = '';
     this.age = this.weight = 0;
+    
     this.fruitForm = this.formBuilder.group({
       'date': [new Date(), Validators.required],
       'fruit-0': [],
@@ -36,16 +40,24 @@ export class NewDayComponent implements OnInit{
       'fruit-7': [],
       'fruit-8': [],
       'fruit-9': [],
+      'fruit-10': [],
+      'fruit-11': [],
     });
   }
 
   ngOnInit(): void {
+
     let sesh_email = sessionStorage.getItem("session_email");
- 
     this.email = sesh_email || "unknown";
     this.gender = sessionStorage.getItem("session_gender") ?? "female"; // let's assume female if unknown 
     this.age = Number.parseInt(sessionStorage.getItem("session_age") ?? "21"); // let's assume 21 if unknown 
     this.weight = Number.parseInt(sessionStorage.getItem("session_weight") ?? "70"); // let's assume 70 kgs if unknown 
+
+    this.fruitService.getAll().subscribe(f => {
+      this.fruits = f
+      this.fruits.forEach(fruit => this.vitaminC.push(fruit.vitaminC));
+    });
+    console.log(this.fruits)
 
     if (!sesh_email) {
       this.snackBar.open("An error occurred..", "Sorry")
@@ -69,9 +81,14 @@ export class NewDayComponent implements OnInit{
   calculateVitaminCConsumption(age: number, gender: string, weight: number, quantities: number[]): number[] {
     const genderFactor = gender === 'female' ? 25 : 0;
     const dailyIntake = 90 + 0.65 * weight + (-0.51 * age) + genderFactor; // in milligrams
-    const vitaminC = [.532, .031, .087, .032, .078, .588, .066, .478, .121, .046];
+                    // ['🍊 Oranges', '🍐 Pears', '🍌 Bananas', '🍇 Grapes', '🍉 Watermelons', '🍓 Strawberries', '🍑 Peaches', '🍍 Pineapples', '🍒 Cherries', '🍎 Apples'];
+    // const vitaminC = [.532, .031, .087, .032, .078, .588, .066, .478, .121, .046];
 
-    const totalConsumption = quantities.reduce((sum, quantity, i) => sum + quantity * vitaminC[i], 0);
+    // console.log(this.vitaminC);
+    // console.log(quantities);
+    
+
+    const totalConsumption = quantities.reduce((sum, quantity, i) => sum + quantity * this.vitaminC[i], 0);
     const percentageConsumed = Math.floor((totalConsumption / dailyIntake) * 100);
     return [dailyIntake, totalConsumption, percentageConsumed];
   }
@@ -107,11 +124,17 @@ export class NewDayComponent implements OnInit{
     d.setSeconds(0);
     d.setMilliseconds(0);
     
+    let f = [];
+    for (let i = 0; i < quantities.length; i++) {
+      if (quantities[i] !== 0) {
+        f.push(quantities[i].toString() + 'g ' + this.fruits[i].emoji)
+      }
+    }
 
     let userDay: UserDay = {
       date: d.getTime(),
       email: this.email,
-      fruits: quantities,
+      fruits: f,
       vitaminC: vitC[2]
     }
 
