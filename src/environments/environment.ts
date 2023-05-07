@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-
+  firebase: {
+    // TODO: CooSpacen be van adva.
+  },
   production: false,
   hostUrl: 'http://localhost:4200'
 };
