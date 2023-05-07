@@ -1,27 +1,20 @@
 # WebkertC649q1
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
+## VAN "FORDÍTÁSI HIBA", mert Angular v15...
 
-## Development server
+### Fix:  
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Itt:
+`node_modules/@angular/fire/compat/firestore/interfaces.d.ts`
 
-## Code scaffolding
+Ezt:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+![ezt](https://user-images.githubusercontent.com/108903695/203350819-ee6630d6-107f-4661-a50c-54562481f1fb.png)  
 
-## Build
+Átírni erre:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+![erre](https://user-images.githubusercontent.com/108903695/203350941-eeca957d-2e0e-4036-918e-5d3d4880097f.png)  
 
-## Running unit tests
+Vagy csak másold be az `@angular` mappát a `node_modules`-ba `npm install` után.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+a pontozás talán valami ilyesmi, idk? [spreadsheet](https://docs.google.com/spreadsheets/d/1BsO2lVaNCg_De7ttBgvFmWsyBXPOq5QrGqO85Hu5K2g/edit?usp=sharing)
